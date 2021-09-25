@@ -147,7 +147,7 @@ class MysqlPython(object):
         number_rows = self.__session.rowcount
         number_columns = len(self.__session.description)
 
-        if number_rows >= 1 and number_columns > 1:
+        if number_rows >= 1 and number_columns > 1 or "*" in sql:
             result = [item for item in self.__session.fetchall()]
         else:
             result = [item[0] for item in self.__session.fetchall()]
